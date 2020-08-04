@@ -8,11 +8,11 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.modestack</groupId>
-	<artifactId>Modestack</artifactId>
+	<groupId>com.userprofile</groupId>
+	<artifactId>UserProfile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Modestack</name>
-	<description>Demo project for Spring Boot</description>
+	<name>UserProfile</name>
+	<description>Demo project for Spring Boot4</description>
 
 	<properties>
 		<java.version>1.8</java.version>
