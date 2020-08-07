@@ -12,7 +12,7 @@
 	<artifactId>UserProfile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>UserProfile</name>
-	<description>Demo project for Spring Boot4</description>
+	<description>Spring Boot4</description>
 
 	<properties>
 		<java.version>1.8</java.version>
