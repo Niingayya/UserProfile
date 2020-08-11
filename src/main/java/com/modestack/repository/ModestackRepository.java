@@ -8,6 +8,7 @@ import com.modestack.model.UserProfile;
 @Repository
 public interface ModestackRepository extends CrudRepository<UserProfile, Integer> {
 
+	public UserProfile findByUserName(String userName);
 	public UserProfile findByUserNameAndPassword(String userName, String password);
 	public UserProfile findByUserNameAndAccessToken(String userName, String accessToken);
 	

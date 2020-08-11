@@ -23,15 +23,25 @@ public class ModestackServiceImpl implements ModestackService {
 	ArticleRepository articleRepository;
 
 	public UserProfile userRegistory(UserProfile userProfile) {
+		
+		UserProfile profile=null;
+		
+		UserProfile user=modestackRepository.findByUserName(userProfile.getUserName());
+		
+		if(user!=null) {
+			
+			profile=null;
+		}
+		
+		else {
 		String userName = userProfile.getUserName();
 		String password = userProfile.getPassword();
 		String token = Base64.getEncoder().encodeToString((userName + password).getBytes());
 		userProfile.setAccessToken(token);
-		UserProfile profile = modestackRepository.save(userProfile);
-
+	    profile = modestackRepository.save(userProfile);
+		}
 		return profile;
 	}
-
 	public Map<String, String> userLogin(String userName, String password) {
 		String accessToken = null;
 		UserProfile profile = modestackRepository.findByUserNameAndPassword(userName, password);
