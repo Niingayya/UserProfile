@@ -31,9 +31,14 @@ public class ModestackController {
 	private ResponseEntity<Object> userRegistory(@RequestBody UserProfile userProfile) {
 
 		UserProfile profile = modestackService.userRegistory(userProfile);
+		
+		if(profile==null) {
 
-		return new ResponseEntity<Object>("new user created",HttpStatus.CREATED);
-
+			return new ResponseEntity<Object>("User name already exists,choose diffrent user name",HttpStatus.CONFLICT);
+		}
+		
+		
+		else	return new ResponseEntity<Object>("new user created",HttpStatus.CREATED);
 	}
 
 	@ApiOperation(httpMethod = "POST", value = "login success.")
