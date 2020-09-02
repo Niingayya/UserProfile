@@ -1,11 +1,20 @@
 package com.modestack.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 @Table(name="user_profile")
@@ -30,6 +39,15 @@ public class UserProfile {
 	
 	@Column(name="access_token")
 	private String accessToken;
+	
+	@Column(name="dob")
+	private String dob;
+	
+	@Column(name="phone_no")
+	private String phoneNo;
+	
+	@OneToMany(mappedBy = "userProfile", fetch = FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval = true)
+	private Set<SocialLinks> socialLinks;
 
 	public int getUserId() {
 		return userId;
@@ -44,9 +62,11 @@ public class UserProfile {
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		 this.userName = userName;
 	}
 
+	@JsonIgnore
+	@JsonProperty(value = "password")
 	public String getPassword() {
 		return password;
 	}
@@ -79,12 +99,37 @@ public class UserProfile {
 		this.accessToken = accessToken;
 	}
 
-	@Override
-	public String toString() {
-		return "UserProfile [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email="
-				+ email + ", address=" + address + ", accessToken=" + accessToken + "]";
-	}
 	
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	public Set<SocialLinks> getSocialLinks() {
+		return socialLinks;
+	}
+
+	public void setSocialLinks(Set<SocialLinks> socialLinks) {
+		this.socialLinks = socialLinks;
+		
+		for (SocialLinks socialLinks2 : socialLinks) {
+			
+			socialLinks2.setUserProfile(this);
+			
+		}
+	}
+
 	
 
 }

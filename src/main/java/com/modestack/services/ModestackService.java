@@ -8,9 +8,15 @@ import com.modestack.model.UserProfile;
 
 public interface ModestackService {
 
-	public UserProfile userRegistory(UserProfile userProfile);
+	public UserProfile userRegistory(UserProfile userProfile) throws InterruptedException;
+	
+	public UserProfile updateUserProfile(UserProfile userProfile,int userId);
+	
+	public UserProfile getUser(int userId);
 	
 	public Map<String, String> userLogin(String userName,String password);
+	
+	public List<UserProfile> getAllUsers();
 	
 	public Article createArticle(Article article);
 	

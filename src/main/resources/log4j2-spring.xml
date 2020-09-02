@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ISO8601} %5p [%t] %c{1.} (%F:%L) - %msg%n" />
+        </Console>
+
+        <RollingFile name="RollingFile"
+                     fileName="file:C:/var/log/Modestack/error.log"
+                     filePattern="file:C:/var/log/Modestack/error.log%d{-yyyyMMdd}.gz">
+            <PatternLayout>
+                <pattern>%d{ISO8601} %5p [%t] %c{1.} (%F:%L) - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="file:C:/var/log/Modestack" maxDepth="1">
+                    <IfFileName glob="*/error.log*.gz" />
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+
+        <Logger name="com.modestack" level="INFO">
+            <AppenderRef ref="RollingFile" />
+        </Logger>
+
+    </Loggers>
+
+</Configuration>

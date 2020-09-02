@@ -25,3 +25,18 @@ create table articles (
 	PRIMARY KEY (article_id),
 	FOREIGN KEY (user_id) REFERENCES user_profile(user_id)
 )ENGINE=innodb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+create table social_links(
+   links_id int(11) NOT NULL AUTO_INCREMENT,
+   user_id int(11) NOT NULL,
+   facebook_url varchar(150) NOT NULL,
+   twitter_url varchar(150) NOT NULL,
+   instagram_url varchar(150) NOT NULL,
+   created_time datetime NOT NULL DEFAULT NOW(),
+   updated_time datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (links_id),
+   FOREIGN KEY (user_id) REFERENCES user_profile(user_id)
+)ENGINE=innodb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
