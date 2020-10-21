@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 
     <Appenders>
 
-        <!-- Console Appender -->
+        Console Appender
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{ISO8601} %5p [%t] %c{1.} (%F:%L) - %msg%n" />
         </Console>
@@ -22,14 +22,14 @@
                 <Delete basePath="file:C:/var/log/Modestack" maxDepth="1">
                     <IfFileName glob="*/error.log*.gz" />
                     <IfLastModified age="30d" />
-                </Delete>
+                </Delete> 
             </DefaultRolloverStrategy>
         </RollingFile>
 
     </Appenders>
 
     <Loggers>
-        <!-- LOG everything at INFO level -->
+        LOG everything at INFO level
         <Root level="info">
             <AppenderRef ref="Console" />
         </Root>
@@ -40,4 +40,4 @@
 
     </Loggers>
 
-</Configuration>
+</Configuration> -->
